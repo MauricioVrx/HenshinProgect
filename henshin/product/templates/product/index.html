@@ -4,11 +4,10 @@
     {% for product in latest_products_list%}
         <h3></h3>
         <div class="box">
-            {{ product.main_image.url }}
             <section>
                 <figure>
-                    <img src={{ product.main_image.url }} alt= {{ product }} >    
-                  </figure>
+                    <img src={{ product.main_image.imgProduct.url }} alt= {{ product }} >    
+                </figure>
             </section>
         </div>
         <div class="box">
