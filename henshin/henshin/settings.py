@@ -52,6 +52,7 @@ DJANGO_APPS = [
 ]
 
 THIRD_APPS = [
+    'gdstorage'
 ]
 
 LOCAL_APPS = [
@@ -143,3 +144,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#
+# Google Drive Storage Settings
+#
+
+GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE= "./Google_Drive.json"
+# GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE=env.str('GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE')
+# GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE="./Google_Drive.json"

@@ -2,6 +2,8 @@
 from django.db import models
 from django.forms import CharField
 
+from gdstorage.storage import GoogleDriveStorage
+gd_storage = GoogleDriveStorage()
 
 class TypeProduct(models.Model):
     name = models.CharField(max_length=50)
@@ -57,19 +59,23 @@ class StockProduct(models.Model):
 
 class ImageProduct(models.Model):
     name = models.CharField(max_length=50)
-    url  = models.TextField(null = True)
+    imgProduct  = models.FileField(upload_to='product', storage=gd_storage, null=True)
     description = models.CharField(max_length=50, blank=True)
     type = models.CharField(max_length=10, blank=True)
 
     def __str__(self):
         return (f"{self.name}")
 
+    def algo(self):
+        return gd_storage
+
+
 class Tag(models.Model):
     name = models.CharField(max_length=30)
     type = models.CharField(max_length=30)
 
     def __str__(self):
-        return(f"{self.name}")
+        return (f"{self.name}")
 
 
 class Product(models.Model):
@@ -85,7 +91,7 @@ class Product(models.Model):
     def __str__(self):
         return (f"{self.name}")
 
-
+# ./henshin/Google_Drive.json|
 class ProductStock(models.Model):
     model     = models.CharField(max_length = 20, blank=True, default="")
     product       = models.ForeignKey(Product       , on_delete=models.CASCADE)
